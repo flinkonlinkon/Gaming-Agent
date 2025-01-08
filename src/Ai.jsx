@@ -12,7 +12,7 @@ export default function Ai() {
 
   const [response, setResponse] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [history, setHistory] = useState([]); // History state to store past responses
+  const [history, setHistory] = useState([]);
 
   // Define emojis based on the topic
   const getTopicEmojis = (topic) => {
@@ -61,13 +61,13 @@ export default function Ai() {
 
       const result = await model.generateContent(prompt);
       const newResponse = {
-        title: result.response.text().split("\n")[0],  // Assuming title is the first line
+        title: result.response.text().split("\n")[0], 
         content: result.response.text(),
       };
 
-      // Update the response state and history state
+      
       setResponse([newResponse]);
-      setHistory([newResponse, ...history]); // Add the new response to history
+      setHistory([newResponse, ...history];
     } catch (error) {
       console.error("Error generating content:", error);
       toast.error("An error occurred while generating the content.");
